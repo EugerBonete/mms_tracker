@@ -1,14 +1,19 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { siteConfig } from "@/config/site";
-import Sidebar from "@/components/sidebar";
-import { cn } from "@/lib/utils";
 import Navbar from "@/components/navbar";
+import Shell from "@/components/shell";
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
 import Providers from "@/providers";
+import type { Metadata } from "next";
+import { Inter as FontSans } from "next/font/google";
+import "./globals.css";
+import Footer from "@/components/footer";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import SideNav from "@/components/sidenav";
 
-const inter = Inter({ subsets: ["latin"] });
-
+export const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
@@ -51,13 +56,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("flex gap-x-2 min-h-screen p-2", inter.className)}>
+      <body
+        className={cn(
+          "min-h-screen font-sans antialiased animate-background ",
+          fontSans.variable
+        )}
+      >
         <Providers>
-          <Sidebar />
-          <main className="bg-secondary rounded-lg w-full">
-            <Navbar />
-            {children}
-          </main>
+          <Navbar />
+          <Shell className="flex">
+            <ScrollArea className="max-h-screen w-[300px] rounded-md p-4">
+              <SideNav />
+            </ScrollArea>
+            <ScrollArea className="max-h-screen rounded-md p-4">
+              {children}
+            </ScrollArea>
+          </Shell>
+          <Footer />
         </Providers>
       </body>
     </html>

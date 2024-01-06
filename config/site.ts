@@ -1,6 +1,6 @@
 // please update required information
 export const siteConfig = {
-  title: "Maintenance Tracker",
+  title: "Trackify",
   author: "Euger Bonete",
   headerTitle: "Maintain & track your equipment",
   description:
@@ -18,4 +18,26 @@ export const siteConfig = {
   linkedin: "https://www.linkedin.com/in/euger-bonete/",
   dribbble: "https://www.dribbble.com",
   locale: "en-US",
+  navItems: [
+    {
+      href: "/",
+      text: "Dashbard",
+    },
+    {
+      href: "/table",
+      text: "Table View",
+    },
+    {
+      href: "/upload",
+      text: "Upload",
+    },
+    {
+      href: "/upload",
+      text: "Examples",
+    },
+    {
+      href: "/upload",
+      text: "GitHub",
+    },
+  ],
 };
